@@ -15,7 +15,6 @@ public class Main {
 
             try {
                 long[] numbers = inputHandler.validateAndParseInput();
-
                 NumberProcessor.process(numbers);
 
             } catch (NumberFormatException e) {
