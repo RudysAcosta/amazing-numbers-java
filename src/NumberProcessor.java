@@ -5,6 +5,13 @@ public class NumberProcessor {
 
         if (numbers.length == 1) {
             long number = numbers[0];
+
+            if (number == 0) {
+                System.out.println();
+                System.out.println("Goodbye!");
+                System.exit(0);
+            }
+
             printer = new SingleNumberPrinter(new Number(number));
         } else if (numbers.length == 2) {
             long start = numbers[0];
