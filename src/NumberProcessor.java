@@ -8,8 +8,8 @@ public class NumberProcessor {
             printer = new SingleNumberPrinter(new Number(number));
         } else if (numbers.length == 2) {
             long start = numbers[0];
-            long end = numbers[1];
-            printer = new MultipleNumbersPrinter(start, end);
+            int quantity = (int) numbers[1];
+            printer = new MultipleNumbersPrinter(start, quantity);
         } else {
             System.out.println("Entrada no válida.");
             return;

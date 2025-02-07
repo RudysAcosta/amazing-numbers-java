@@ -1,26 +1,58 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MultipleNumbersPrinter  implements NumberPrinter {
     private final long start;
-    private final long end;
+    private final int quantity;
 
     private Number[] numbers;
 
-    public MultipleNumbersPrinter(long start, long end) {
+    public MultipleNumbersPrinter(long start, int  quantity) {
         this.start = start;
-        this.end = end;
+        this.quantity = quantity;
 
-        int diff = (int) (end - start);
-        numbers = new Number[diff + 1];
+        numbers = new Number[quantity];
 
-        for (int i = 0; i <= diff; i++) {
-            numbers[i] = new Number(start + i);
+        for (int i = 0; i < quantity; i++) {
+            long number = start + i;
+            numbers[i] = new Number(number);
         }
     }
 
     public void print() {
-        System.out.println("Printing numbers between " + start + " and " + end);
-        System.out.println(Arrays.toString(numbers));
+        for(Number number : numbers) {
+            System.out.println(number.getValue() + " is " + getProperties(number));
+        }
+
+        System.out.println();
+    }
+
+    private String getProperties(Number number) {
+        NumberProperties properties = new NumberProperties(number);
+        ArrayList<String> propertiesString = new ArrayList<>();
+
+
+        if ((properties.isDivisibleBy(7) || number.getLastDigit() == 7)) {
+            propertiesString.add("buzz");
+        }
+
+        if (properties.isDuck()) {
+            propertiesString.add("duck");
+        }
+
+        if (properties.isGapful()) {
+            propertiesString.add("gapful");
+        }
+
+        if (properties.isEven()) {
+            propertiesString.add("even");
+        }
+
+        if (!properties.isEven()) {
+            propertiesString.add("odd");
+        }
+
+        return String.join(" ", propertiesString);
     }
 
 }
