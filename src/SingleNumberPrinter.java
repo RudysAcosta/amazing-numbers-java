@@ -13,8 +13,8 @@ public class SingleNumberPrinter implements NumberPrinter {
         NumberFormat numberFormat = NumberFormat.getInstance();
         NumberProperties properties = new NumberProperties(number);
 
+        System.out.println();
         System.out.printf("Properties of %s \n",  numberFormat.format(number.getValue()));
-
         System.out.printf("buzz: %b \n",  (properties.isDivisibleBy(7) || number.getLastDigit() == 7));
         System.out.printf("duck: %b \n",  properties.isDuck());
         System.out.printf("palindromic: %b \n",  properties.isPalindrome());

@@ -20,10 +20,10 @@ public class MultipleNumbersPrinter  implements NumberPrinter {
     }
 
     public void print() {
+        System.out.println();
         for(Number number : numbers) {
             System.out.println(number.getValue() + " is " + getProperties(number));
         }
-
         System.out.println();
     }
 
