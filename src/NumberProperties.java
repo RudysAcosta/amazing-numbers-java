@@ -46,4 +46,16 @@ class NumberProperties {
         return number.getValue() % ((number.getFirstDigit() * 10L) + number.getLastDigit()) == 0;
     }
 
+    public boolean isSpy() {
+        int[] digits = number.getDigits();
+        long product = 1, sum = 0;
+
+        for (int digit : digits) {
+            product *= digit;
+            sum += digit;
+        }
+
+        return product == sum;
+    }
+
 }

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MultipleNumbersPrinter  implements NumberPrinter {
     private final long start;
@@ -42,6 +41,10 @@ public class MultipleNumbersPrinter  implements NumberPrinter {
 
         if (properties.isGapful()) {
             propertiesString.add("gapful");
+        }
+
+        if (properties.isSpy()) {
+            propertiesString.add("spy");
         }
 
         if (properties.isEven()) {

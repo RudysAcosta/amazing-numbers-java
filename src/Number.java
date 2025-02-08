@@ -21,4 +21,15 @@ public class Number {
         }
         return (int) num;
     }
+
+    public int[] getDigits() {
+        String s = Long.toString(this.value);
+        int[] digits = new int[s.length()];
+
+        for (int i = 0; i < digits.length; i++) {
+            digits[i] = Character.getNumericValue(s.charAt(i));
+        }
+
+        return digits;
+    }
 }

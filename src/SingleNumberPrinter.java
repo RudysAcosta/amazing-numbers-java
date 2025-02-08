@@ -19,6 +19,7 @@ public class SingleNumberPrinter implements NumberPrinter {
         System.out.printf("duck: %b \n",  properties.isDuck());
         System.out.printf("palindromic: %b \n",  properties.isPalindrome());
         System.out.printf("gapful: %b \n",  properties.isGapful());
+        System.out.printf("spy: %b \n",  properties.isSpy());
         System.out.printf("even: %b \n",  properties.isEven());
         System.out.printf("odd: %b \n\n",  !properties.isEven());
 
