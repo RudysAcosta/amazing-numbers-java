@@ -1,27 +1,29 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputHandler {
     private Scanner scanner = new Scanner(System.in);
     private String input;
+    private String[] tokens;
 
     public InputHandler() {
         System.out.print("Enter a request: ");
         this.input = scanner.nextLine().trim();
+        this.tokens = input.split(" ");
+
     }
 
-    public String getInput() {
-        return this.input;
+    public String[] getTokens() {
+        return tokens;
     }
 
     public long[] validateAndParseInput() {
-        if (input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException("Input cannot be null or empty.");
-        }
 
-        String[] tokens = input.split(" ");
-        long[] numbers = new long[tokens.length];
+        int length = (tokens.length > 2) ? 2 : tokens.length;
 
-        for (int i = 0; i < tokens.length; i++) {
+        long[] numbers = new long[length];
+
+        for (int i = 0; i < length; i++) {
             try {
                 numbers[i] = Long.parseLong(tokens[i]);
 
@@ -35,6 +37,24 @@ public class InputHandler {
         }
 
         return numbers;
+    }
+
+    public String validateProperty() {
+        String property = "";
+
+        if (tokens.length > 2) {
+            property = tokens[2].toUpperCase();
+
+            if (!Arrays.stream(NumberProperties.AVAILABLE_PROPERTIES).anyMatch(property::equals)) {
+                throw new PropertyInvalidaException("The property [" + property + "] is wrong.");
+            }
+        }
+
+        return property;
+    }
+
+    public String getProperty() {
+        return input;
     }
 
     public void close() {

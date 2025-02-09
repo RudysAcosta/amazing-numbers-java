@@ -2,6 +2,7 @@ class NumberProperties {
 
     private final Number number;
 
+    public static final String[] AVAILABLE_PROPERTIES = {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD"};
 
     public NumberProperties(Number number) {
         this.number = number;

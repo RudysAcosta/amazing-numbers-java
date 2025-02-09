@@ -1,5 +1,5 @@
 public class NumberProcessor {
-    public static void process(long[] numbers) {
+    public static void process(long[] numbers, String propety) {
 
         NumberPrinter printer;
 
@@ -16,6 +16,13 @@ public class NumberProcessor {
         } else if (numbers.length == 2) {
             long start = numbers[0];
             int quantity = (int) numbers[1];
+            printer = new MultipleNumbersPrinter(start, quantity);
+        } else if (numbers.length == 3) {
+            long start = numbers[0];
+            int quantity = (int) numbers[1];
+
+            System.out.println(propety);
+
             printer = new MultipleNumbersPrinter(start, quantity);
         } else {
             System.out.println("Entrada no válida.");

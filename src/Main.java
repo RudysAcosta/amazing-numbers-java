@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Amazing Numbers!\n");
@@ -6,17 +8,24 @@ public class Main {
         while(true) {
             InputHandler inputHandler = new InputHandler();
 
-            if (inputHandler.getInput().isEmpty()) {
+            if (inputHandler.getTokens().length == 0) {
                 printSupportedRequests();
                 continue;
             }
 
             try {
                 long[] numbers = inputHandler.validateAndParseInput();
-                NumberProcessor.process(numbers);
+
+                String property = inputHandler.validateProperty();
+
+                NumberProcessor.process(numbers, property);
 
             } catch (NumberFormatException e) {
                 System.out.println("\n" + e.getMessage() + "\n");
+            } catch (PropertyInvalidaException e) {
+                System.out.println("\n" + e.getMessage());
+                System.out.println("Available properties: [" + String.join(", ",
+                        NumberProperties.AVAILABLE_PROPERTIES) + "] \n");
             }
         }
 
