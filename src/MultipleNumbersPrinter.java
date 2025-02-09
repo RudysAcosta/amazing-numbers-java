@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class MultipleNumbersPrinter  implements NumberPrinter {
@@ -32,9 +33,11 @@ public class MultipleNumbersPrinter  implements NumberPrinter {
     }
 
     public void print() {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+
         System.out.println();
         for(Number number : numbers) {
-            System.out.println(number.getValue() + " is " + getProperties(number));
+            System.out.println(numberFormat.format(number.getValue()) + " is " + getProperties(number));
         }
         System.out.println();
     }
@@ -72,7 +75,7 @@ public class MultipleNumbersPrinter  implements NumberPrinter {
             propertiesString.add("odd");
         }
 
-        return String.join(" ", propertiesString);
+        return String.join(", ", propertiesString);
     }
 
 }
