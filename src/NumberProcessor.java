@@ -13,18 +13,15 @@ public class NumberProcessor {
             }
 
             printer = new SingleNumberPrinter(new Number(number));
+        } else if (numbers.length == 2 && !propety.isEmpty()) {
+            long start = numbers[0];
+            int quantity = (int) numbers[1];
+            printer = new MultipleNumbersPrinter(start, quantity, propety);
         } else if (numbers.length == 2) {
             long start = numbers[0];
             int quantity = (int) numbers[1];
             printer = new MultipleNumbersPrinter(start, quantity);
-        } else if (numbers.length == 3) {
-            long start = numbers[0];
-            int quantity = (int) numbers[1];
-
-            System.out.println(propety);
-
-            printer = new MultipleNumbersPrinter(start, quantity);
-        } else {
+        }  else {
             System.out.println("Entrada no válida.");
             return;
         }

@@ -1,20 +1,33 @@
 import java.util.ArrayList;
 
 public class MultipleNumbersPrinter  implements NumberPrinter {
-    private final long start;
-    private final int quantity;
 
     private Number[] numbers;
 
     public MultipleNumbersPrinter(long start, int  quantity) {
-        this.start = start;
-        this.quantity = quantity;
-
         numbers = new Number[quantity];
 
         for (int i = 0; i < quantity; i++) {
             long number = start + i;
             numbers[i] = new Number(number);
+        }
+    }
+
+    public MultipleNumbersPrinter(long start, int  quantity, String property) {
+        numbers = new Number[quantity];
+
+        for (int i = 0; i < quantity; ) {
+            Number number = new Number(start);
+            NumberProperties numberProperties = new NumberProperties(number);
+
+            boolean checkProperty = numberProperties.checkProperty(property);
+
+            if (checkProperty) {
+                numbers[i] = number;
+                i++;
+            }
+
+            start++;
         }
     }
 
@@ -41,6 +54,10 @@ public class MultipleNumbersPrinter  implements NumberPrinter {
 
         if (properties.isGapful()) {
             propertiesString.add("gapful");
+        }
+
+        if (properties.isPalindrome()) {
+            propertiesString.add("palindromic");
         }
 
         if (properties.isSpy()) {

@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
 class NumberProperties {
 
     private final Number number;
@@ -57,6 +61,20 @@ class NumberProperties {
         }
 
         return product == sum;
+    }
+
+    public boolean checkProperty(String property) {
+        Map<String, Supplier<Boolean>> properties = new HashMap<>();
+
+        properties.put("BUZZ", () -> isDivisibleBy(7) || (number != null && number.getLastDigit() == 7));
+        properties.put("DUCK", this::isDuck);
+        properties.put("PALINDROMIC", this::isPalindrome);
+        properties.put("GAPFUL", this::isGapful);
+        properties.put("SPY", this::isSpy);
+        properties.put("EVEN", this::isEven);
+        properties.put("ODD", () -> !isEven());
+
+        return properties.getOrDefault(property.toUpperCase(), () -> false).get();
     }
 
 }
