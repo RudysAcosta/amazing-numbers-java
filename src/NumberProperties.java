@@ -6,7 +6,10 @@ class NumberProperties {
 
     private final Number number;
 
-    public static final String[] AVAILABLE_PROPERTIES = {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD"};
+    public static final String[] AVAILABLE_PROPERTIES = {
+            "BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
+            "SQUARE", "SONNY"
+    };
 
     public NumberProperties(Number number) {
         this.number = number;
@@ -63,6 +66,26 @@ class NumberProperties {
         return product == sum;
     }
 
+    public boolean isPerfectSquareNumber(long number) {
+        if (number == 0) return false;
+
+        long sqrt = (long) Math.sqrt(number);
+
+        return sqrt * sqrt == number;
+    }
+
+    public boolean isPerfectSquareNumber() {
+        if (number.getValue() == 0) return false;
+
+        long sqrt = (long) Math.sqrt(number.getValue());
+
+        return sqrt * sqrt == number.getValue();
+    }
+
+    public boolean isSunnyNumber() {
+        return isPerfectSquareNumber(number.getValue() + 1);
+    }
+
     public boolean checkProperty(String property) {
         Map<String, Supplier<Boolean>> properties = new HashMap<>();
 
@@ -73,6 +96,8 @@ class NumberProperties {
         properties.put("SPY", this::isSpy);
         properties.put("EVEN", this::isEven);
         properties.put("ODD", () -> !isEven());
+        properties.put("SQUARE", this::isPerfectSquareNumber);
+        properties.put("SONNY", this::isSunnyNumber);
 
         return properties.getOrDefault(property.toUpperCase(), () -> false).get();
     }

@@ -67,6 +67,14 @@ public class MultipleNumbersPrinter  implements NumberPrinter {
             propertiesString.add("spy");
         }
 
+        if (properties.isPerfectSquareNumber()) {
+            propertiesString.add("square");
+        }
+
+        if (properties.isSunnyNumber()) {
+            propertiesString.add("sunny");
+        }
+
         if (properties.isEven()) {
             propertiesString.add("even");
         }
