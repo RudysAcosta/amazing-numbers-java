@@ -23,13 +23,15 @@ public class InputHandler {
 
         long[] numbers = new long[length];
 
+        if (numbers[0] < 0) {
+            throw new NumberFormatException("The first parameter should be a natural number or zero.");
+        }
+
         for (int i = 0; i < length; i++) {
             try {
                 numbers[i] = Long.parseLong(tokens[i]);
 
-                if (numbers[i] < 0) {
-                    throw new NumberFormatException("The first parameter should be a natural number or zero.");
-                }
+
 
             }catch (NumberFormatException e) {
                 throw new NumberFormatException("The first parameter should be a natural number or zero.");
@@ -60,6 +62,4 @@ public class InputHandler {
     public void close() {
         scanner.close();
     }
-
-
 }
