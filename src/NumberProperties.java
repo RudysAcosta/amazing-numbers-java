@@ -8,7 +8,7 @@ class NumberProperties {
 
     public static final String[] AVAILABLE_PROPERTIES = {
             "BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
-            "SQUARE", "SONNY"
+            "SQUARE", "SUNNY"
     };
 
     public NumberProperties(Number number) {
@@ -97,7 +97,7 @@ class NumberProperties {
         properties.put("EVEN", this::isEven);
         properties.put("ODD", () -> !isEven());
         properties.put("SQUARE", this::isPerfectSquareNumber);
-        properties.put("SONNY", this::isSunnyNumber);
+        properties.put("SUNNY", this::isSunnyNumber);
 
         return properties.getOrDefault(property.toUpperCase(), () -> false).get();
     }
