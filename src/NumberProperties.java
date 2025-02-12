@@ -9,7 +9,7 @@ class NumberProperties {
 
     public static final Set<String> AVAILABLE_PROPERTIES = Set.of(
             "BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
-            "SQUARE", "SUNNY"
+            "SQUARE", "SUNNY", "JUMPING"
     );
 
     public NumberProperties(Number number) {
@@ -87,6 +87,18 @@ class NumberProperties {
         return isPerfectSquareNumber(number.getValue() + 1);
     }
 
+    public boolean isJumping() {
+        int[] digits = number.getDigits();
+
+        if (digits.length == 1) return true;
+
+        for (int i = 1; i < digits.length; i++) {
+            if (Math.abs(digits[i -1] - digits[i]) != 1) return false;
+        }
+
+        return true;
+    }
+
     public boolean checkProperty(String property) {
         Map<String, Supplier<Boolean>> properties = new HashMap<>();
 
@@ -99,6 +111,7 @@ class NumberProperties {
         properties.put("ODD", () -> !isEven());
         properties.put("SQUARE", this::isPerfectSquareNumber);
         properties.put("SUNNY", this::isSunnyNumber);
+        properties.put("JUMPING", this::isJumping);
 
         return properties.getOrDefault(property.toUpperCase(), () -> false).get();
     }

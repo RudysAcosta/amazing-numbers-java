@@ -22,7 +22,9 @@ public class SingleNumberPrinter implements NumberPrinter {
         System.out.printf("spy: %b \n",  properties.isSpy());
         System.out.printf("square: %b \n",  properties.isPerfectSquareNumber());
         System.out.printf("sunny: %b \n",  properties.isSunnyNumber());
+        System.out.printf("jumping: %b \n",  properties.isJumping());
         System.out.printf("even: %b \n",  properties.isEven());
         System.out.printf("odd: %b \n\n",  !properties.isEven());
+
     }
 }

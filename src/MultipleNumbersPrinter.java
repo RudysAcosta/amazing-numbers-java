@@ -82,6 +82,10 @@ public class MultipleNumbersPrinter  implements NumberPrinter {
             propertiesString.add("sunny");
         }
 
+        if (properties.isJumping()) {
+            propertiesString.add("jumping");
+        }
+
         if (properties.isEven()) {
             propertiesString.add("even");
         }
