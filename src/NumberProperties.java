@@ -1,15 +1,16 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Supplier;
 
 class NumberProperties {
 
     private final Number number;
 
-    public static final String[] AVAILABLE_PROPERTIES = {
+    public static final Set<String> AVAILABLE_PROPERTIES = Set.of(
             "BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
             "SQUARE", "SUNNY"
-    };
+    );
 
     public NumberProperties(Number number) {
         this.number = number;

@@ -1,5 +1,7 @@
+import java.util.Set;
+
 public class NumberProcessor {
-    public static void process(long[] numbers, String propety) {
+    public static void process(long[] numbers, Set<String> properties) {
 
         NumberPrinter printer;
 
@@ -13,10 +15,10 @@ public class NumberProcessor {
             }
 
             printer = new SingleNumberPrinter(new Number(number));
-        } else if (numbers.length == 2 && !propety.isEmpty()) {
+        } else if (numbers.length == 2 && !properties.isEmpty()) {
             long start = numbers[0];
             int quantity = (int) numbers[1];
-            printer = new MultipleNumbersPrinter(start, quantity, propety);
+            printer = new MultipleNumbersPrinter(start, quantity, properties);
         } else if (numbers.length == 2) {
             long start = numbers[0];
             int quantity = (int) numbers[1];

@@ -1,12 +1,17 @@
+import java.util.Collections;
+import java.util.Set;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Amazing Numbers!\n");
         printSupportedRequests();
 
+
         while(true) {
             InputHandler inputHandler = new InputHandler();
+            int numberOfTokens = inputHandler.getTokens().length;
 
-            if (inputHandler.getTokens().length == 0) {
+            if (numberOfTokens == 0) {
                 printSupportedRequests();
                 continue;
             }
@@ -14,9 +19,16 @@ public class Main {
             try {
                 long[] numbers = inputHandler.validateAndParseInput();
 
-                String property = inputHandler.validateProperty();
+                Set<String> properties;
 
-                NumberProcessor.process(numbers, property);
+                if (numberOfTokens > 2) {
+                    inputHandler.validateProperty();
+                    properties = inputHandler.getProperties();
+                } else {
+                    properties = Collections.emptySet();
+                }
+
+                NumberProcessor.process(numbers, properties);
 
             } catch (NumberFormatException e) {
                 System.out.println("\n" + e.getMessage() + "\n");

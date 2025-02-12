@@ -1,5 +1,6 @@
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class MultipleNumbersPrinter  implements NumberPrinter {
 
@@ -14,18 +15,24 @@ public class MultipleNumbersPrinter  implements NumberPrinter {
         }
     }
 
-    public MultipleNumbersPrinter(long start, int  quantity, String property) {
+    public MultipleNumbersPrinter(long start, int  quantity, Set<String> properties) {
         numbers = new Number[quantity];
+        int count = 0;
 
-        for (int i = 0; i < quantity; ) {
+        while (count < quantity) {
             Number number = new Number(start);
             NumberProperties numberProperties = new NumberProperties(number);
+            boolean valid = true;
 
-            boolean checkProperty = numberProperties.checkProperty(property);
+            for (String property : properties) {
+                if (!numberProperties.checkProperty(property)) {
+                    valid = false;
+                    break;
+                }
+            }
 
-            if (checkProperty) {
-                numbers[i] = number;
-                i++;
+            if (valid) {
+                numbers[count++] = number;
             }
 
             start++;
