@@ -56,24 +56,9 @@ public class InputHandler {
     }
 
     public void validateProperty() {
-        if (tokens.length < 3) {
-            throw new NumberFormatException("The number of properties should be at least 3");
-        }
 
-        if (properties.contains("EVEN") && properties.contains("ODD")) {
-            throw new NumberFormatException("The request contains mutually exclusive properties: [ODD, EVEN] " +
-                    "\n There are no numbers with these properties");
-        }
-
-        if (properties.contains("DUCK") && properties.contains("SPY")) {
-            throw new NumberFormatException("The request contains mutually exclusive properties: [DUCK, SPY]" +
-                    "\n There are no numbers with these properties");
-        }
-
-        if (properties.contains("SUNNY") && properties.contains("SQUARE")) {
-            throw new NumberFormatException("The request contains mutually exclusive properties: [SUNNY, SQUARE]" +
-                    "\n There are no numbers with these properties");
-        }
+        validateMinProperties();
+        validateMutuallyExclusiveProperties();
 
         Set<String> wrongProperties = new HashSet<>();
 
@@ -86,6 +71,30 @@ public class InputHandler {
         if (!wrongProperties.isEmpty()) {
             String title = wrongProperties.size() > 1 ? "are" : "is";
             throw new PropertyInvalidaException("The property [" + String.join(", ", wrongProperties) + "] "+title+" wrong.");
+        }
+    }
+
+    private void validateMinProperties() {
+        if (tokens.length < 3) {
+            throw new NumberFormatException("The number of properties should be at least 3");
+        }
+    }
+
+    private void validateMutuallyExclusiveProperties() {
+        checkMutualExclusion("EVEN", "ODD");
+        checkMutualExclusion("-EVEN", "-ODD");
+        checkMutualExclusion("DUCK", "SPY");
+        checkMutualExclusion("-DUCK", "-SPY");
+        checkMutualExclusion("SUNNY", "SQUARE");
+        checkMutualExclusion("-SUNNY", "-SQUARE");
+        checkMutualExclusion("HAPPY", "SAD");
+        checkMutualExclusion("-HAPPY", "-SAD");
+    }
+
+    private void checkMutualExclusion(String prop1, String prop2) {
+        if (properties.contains(prop1) && properties.contains(prop2)) {
+            throw new NumberFormatException("The request contains mutually exclusive properties: [" +  prop1 +", "+ prop2 +"]" +
+                    "\n There are no numbers with these properties");
         }
     }
 

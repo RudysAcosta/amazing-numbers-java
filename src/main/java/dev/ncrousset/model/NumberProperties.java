@@ -12,7 +12,8 @@ public class NumberProperties {
 
     public static final Set<String> AVAILABLE_PROPERTIES = Set.of(
             "BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
-            "SQUARE", "SUNNY", "JUMPING", "HAPPY", "SAD"
+            "SQUARE", "SUNNY", "JUMPING", "HAPPY", "SAD","-BUZZ", "-DUCK", "-PALINDROMIC",
+            "-GAPFUL", "-SPY", "-EVEN", "-ODD", "-SQUARE", "-SUNNY", "-JUMPING", "-HAPPY", "-SAD"
     );
 
     public NumberProperties(Number number) {
