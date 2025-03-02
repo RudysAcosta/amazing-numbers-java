@@ -17,4 +17,13 @@ public class NumberPropertiesTest {
         assertTrue(numberProperties.isEven());
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {7,14,21,28,35, 70})
+    void testIsDivisibleBy(int num) {
+        Number number = new Number(num);
+        NumberProperties numberProperties = new NumberProperties(number);
+
+        assertTrue(numberProperties.isDivisibleBy(7));
+    }
+
 }
