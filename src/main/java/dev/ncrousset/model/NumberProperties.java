@@ -12,12 +12,23 @@ public class NumberProperties {
 
     public static final Set<String> AVAILABLE_PROPERTIES = Set.of(
             "BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
-            "SQUARE", "SUNNY", "JUMPING", "HAPPY", "SAD","-BUZZ", "-DUCK", "-PALINDROMIC",
+            "SQUARE", "SUNNY", "JUMPING", "HAPPY", "SAD"
+    );
+
+    private static final Set<String> HIDDEN_PROPERTIES = Set.of(
+            "-BUZZ", "-DUCK", "-PALINDROMIC",
             "-GAPFUL", "-SPY", "-EVEN", "-ODD", "-SQUARE", "-SUNNY", "-JUMPING", "-HAPPY", "-SAD"
     );
 
     public NumberProperties(Number number) {
         this.number = number;
+    }
+
+    public static Set<String> getProperties() {
+        Set<String> properties = new HashSet<>(Set.copyOf(AVAILABLE_PROPERTIES));
+        properties.addAll(HIDDEN_PROPERTIES);
+
+        return properties;
     }
 
     public boolean isEven() {

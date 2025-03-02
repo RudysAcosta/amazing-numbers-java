@@ -23,7 +23,7 @@ public class InputHandler {
 
         setProperties();
 
-        close();
+//        close();
     }
 
     public String[] getTokens() {
@@ -65,7 +65,7 @@ public class InputHandler {
         Set<String> wrongProperties = new HashSet<>();
 
         for (String property : properties) {
-            if(!NumberProperties.AVAILABLE_PROPERTIES.contains (property)) {
+            if(!NumberProperties.getProperties().contains (property)) {
                 wrongProperties.add(property);
             }
         }
@@ -88,7 +88,6 @@ public class InputHandler {
         checkMutualExclusion("DUCK", "SPY");
         checkMutualExclusion("-DUCK", "-SPY");
         checkMutualExclusion("SUNNY", "SQUARE");
-        checkMutualExclusion("-SUNNY", "-SQUARE");
         checkMutualExclusion("HAPPY", "SAD");
         checkMutualExclusion("-HAPPY", "-SAD");
 
