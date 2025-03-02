@@ -22,6 +22,8 @@ public class InputHandler {
         this.tokens = input.isEmpty() ? new String[0] : input.split("\\s+");
 
         setProperties();
+
+        close();
     }
 
     public String[] getTokens() {
@@ -89,6 +91,19 @@ public class InputHandler {
         checkMutualExclusion("-SUNNY", "-SQUARE");
         checkMutualExclusion("HAPPY", "SAD");
         checkMutualExclusion("-HAPPY", "-SAD");
+
+        checkMutualExclusion("BUZZ", "-BUZZ");
+        checkMutualExclusion("DUCK", "-DUCK");
+        checkMutualExclusion("PALINDROMIC", "-PALINDROMIC");
+        checkMutualExclusion("GAPFUL", "-GAPFUL");
+        checkMutualExclusion("SPY", "-SPY");
+        checkMutualExclusion("EVEN", "-EVEN");
+        checkMutualExclusion("ODD", "-ODD");
+        checkMutualExclusion("SQUARE", "-SQUARE");
+        checkMutualExclusion("SUNNY", "-SUNNY");
+        checkMutualExclusion("JUMPING", "-JUMPING");
+        checkMutualExclusion("HAPPY", "-HAPPY");
+        checkMutualExclusion("SAD", "-SAD");
     }
 
     private void checkMutualExclusion(String prop1, String prop2) {

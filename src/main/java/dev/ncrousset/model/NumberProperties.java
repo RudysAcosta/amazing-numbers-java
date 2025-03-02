@@ -140,6 +140,18 @@ public class NumberProperties {
         properties.put("JUMPING", this::isJumping);
         properties.put("HAPPY", this::isHappy);
         properties.put("SAD", () -> !isHappy());
+        properties.put("-BUZZ", () -> !(isDivisibleBy(7) || (number != null && number.getLastDigit() == 7)));
+        properties.put("-DUCK", () -> !isDuck());
+        properties.put("-PALINDROMIC", () -> !isPalindrome());
+        properties.put("-GAPFUL", () -> !isGapful());
+        properties.put("-SPY", () -> !isSpy());
+        properties.put("-EVEN", () -> !isEven());
+        properties.put("-ODD", this::isEven);
+        properties.put("-SQUARE", () -> !isPerfectSquareNumber());
+        properties.put("-SUNNY", () -> !isSunnyNumber());
+        properties.put("-JUMPING", () -> !isJumping());
+        properties.put("-HAPPY", () -> !isHappy());
+        properties.put("-SAD", this::isHappy);
 
         return properties.getOrDefault(property.toUpperCase(), () -> false).get();
     }
