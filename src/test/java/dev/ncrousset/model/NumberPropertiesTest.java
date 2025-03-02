@@ -33,4 +33,21 @@ public class NumberPropertiesTest {
         assertEquals(expectedResult, numberProperties.isDivisibleBy(7));
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "70, true",
+            "104, true",
+            "2001, true",
+            "2, false",
+            "5, false", "700, true",
+    })
+    void testIsDuck(int num, boolean expectedResult) {
+        Number number = new Number(num);
+        NumberProperties numberProperties = new NumberProperties(number);
+
+        assertEquals(expectedResult, numberProperties.isDuck());
+    }
+
 }
+
+
