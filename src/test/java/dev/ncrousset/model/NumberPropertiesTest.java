@@ -48,6 +48,23 @@ public class NumberPropertiesTest {
         assertEquals(expectedResult, numberProperties.isDuck());
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "121, true",
+            "1331, true",
+            "4554, true",
+            "12321, true",
+            "98789, true",
+            "700, false",
+            "701, false",
+    })
+    void testIsPalindrome(int num, boolean expectedResult) {
+        Number number = new Number(num);
+        NumberProperties numberProperties = new NumberProperties(number);
+
+        assertEquals(expectedResult, numberProperties.isPalindrome());
+    }
+
 }
 
 
