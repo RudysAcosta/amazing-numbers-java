@@ -51,6 +51,7 @@ public class Main {
     private static void printSupportedRequests() {
         System.out.println();
         System.out.println("Supported requests:");
+        System.out.println("- In this stage, a user can enter two numbers and properties to search for.");  // oh my god, this line
         System.out.println("- enter a natural number to know its properties;");
         System.out.println("- enter two natural numbers to obtain the properties of the list:");
         System.out.println("    * the first parameter represents a starting number;");
