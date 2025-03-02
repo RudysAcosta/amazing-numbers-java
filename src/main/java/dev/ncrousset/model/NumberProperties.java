@@ -1,6 +1,7 @@
 package dev.ncrousset.model;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -101,6 +102,27 @@ public class NumberProperties {
         return true;
     }
 
+    public boolean isHappy() {
+        long num = number.getValue();
+        HashSet<Long> seenNumbers = new HashSet<>();
+
+        while (num != 1 && !seenNumbers.contains(num)) {
+            seenNumbers.add(num);
+            num = sumOfSquares(num);
+        }
+
+        return num == 1;
+    }
+
+    private long sumOfSquares(long num) {
+        long sum = 0;
+        while (num > 0) {
+            long digit = num % 10;
+            sum += digit * digit;
+            num /= 10;
+        }
+        return sum;
+    }
 
     public boolean checkProperty(String property) {
         Map<String, Supplier<Boolean>> properties = new HashMap<>();
@@ -115,7 +137,8 @@ public class NumberProperties {
         properties.put("SQUARE", this::isPerfectSquareNumber);
         properties.put("SUNNY", this::isSunnyNumber);
         properties.put("JUMPING", this::isJumping);
-//        properties.put("HAPPY", this::isHappy);
+        properties.put("HAPPY", this::isHappy);
+        properties.put("SAD", () -> !isHappy());
 
         return properties.getOrDefault(property.toUpperCase(), () -> false).get();
     }

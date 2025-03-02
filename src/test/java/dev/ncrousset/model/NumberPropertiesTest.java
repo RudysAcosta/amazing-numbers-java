@@ -1,6 +1,5 @@
 package dev.ncrousset.model;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -63,6 +62,20 @@ public class NumberPropertiesTest {
         NumberProperties numberProperties = new NumberProperties(number);
 
         assertEquals(expectedResult, numberProperties.isPalindrome());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "19, true",
+            "7, true",
+            "28, true",
+            "4, false",
+            "20, false"
+    })
+    void testIsHappy(int num, boolean expectedResult) {
+        Number number = new Number(num);
+        NumberProperties numberProperties = new NumberProperties(number);
+        assertEquals(expectedResult, numberProperties.isHappy());
     }
 
 }

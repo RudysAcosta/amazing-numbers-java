@@ -99,6 +99,14 @@ public class MultipleNumbersPrinter  implements NumberPrinter {
             propertiesString.add("odd");
         }
 
+        if (properties.isHappy()) {
+            propertiesString.add("happy");
+        }
+
+        if (!properties.isHappy()) {
+            propertiesString.add("sad");
+        }
+
         return String.join(", ", propertiesString);
     }
 
